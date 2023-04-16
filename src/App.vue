@@ -30,10 +30,10 @@ const clear = (): void => {
 <template>
   <div>
     <input v-model="text" />
-    <p class="title">count!!</p>
-    <div v-if="state.count >= 5">5以上です</div>
+    <p class="title">count!!</p> <!--通常のクラス設定 -->
     <p :class="state.countColor">{{ state.count }}</p> <!--ステートのみでclassを切り替える -->
     <p :class="[state.count < 7 ? 'default' : 'warning']">{{ state.count }}</p> <!--直接classを切り替える -->
+    <div v-if="state.count >= 5">5以上です</div>
     <div>
       <button @click="increase">↑</button>
       <button @click="clear">clear</button>
