@@ -4,7 +4,7 @@ import Vue, { reactive } from 'vue'
 //ステートの宣言
 const state = reactive({
   count: 0,
-  countColor: 'default'
+  countColor: 'default' //属性情報
 })
 
 //副作用の宣言
@@ -14,13 +14,13 @@ const text: string = ''
 function increase(): void {
   state.count++
   if(state.count >= 5){
-    state.countColor = 'warning'
+    state.countColor = 'warning'//属性情報を動的に変える
   }
 
 }
 const clear = (): void => {
   state.count = 0
-  state.countColor = 'default'
+  state.countColor = 'default'//属性情報を動的に変える
 }
 
 // import { RouterLink, RouterView } from 'vue-router'
@@ -32,7 +32,8 @@ const clear = (): void => {
     <input v-model="text" />
     <p class="title">count!!</p>
     <div v-if="state.count >= 5">5以上です</div>
-    <p :class="state.countColor">{{ state.count }}</p>
+    <p :class="state.countColor">{{ state.count }}</p> <!--ステートのみでclassを切り替える -->
+    <p :class="[state.count < 7 ? 'default' : 'warning']">{{ state.count }}</p> <!--直接classを切り替える -->
     <div>
       <button @click="increase">↑</button>
       <button @click="clear">clear</button>
