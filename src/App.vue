@@ -1,10 +1,46 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import Vue, { reactive } from 'vue'
+
+//ステートの宣言
+const state = reactive({
+  count: 0,
+  countColor: 'default'
+})
+
+//副作用の宣言
+const text: string = ''
+
+
+function increase(): void {
+  state.count++
+  if(state.count >= 5){
+    state.countColor = 'warning'
+  }
+
+}
+const clear = (): void => {
+  state.count = 0
+  state.countColor = 'default'
+}
+
+// import { RouterLink, RouterView } from 'vue-router'
+// import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <header>
+  <div>
+    <input v-model="text" />
+    <p class="title">count!!</p>
+    <div v-if="state.count >= 5">5以上です</div>
+    <p :class="state.countColor">{{ state.count }}</p>
+    <div>
+      <button @click="increase">↑</button>
+      <button @click="clear">clear</button>
+    </div>
+  </div>
+  
+
+  <!-- <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
@@ -15,13 +51,23 @@ import HelloWorld from './components/HelloWorld.vue'
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div>
-  </header>
+  </header> -->
 
-  <RouterView />
+  <!-- <RouterView /> -->
 </template>
 
 <style scoped>
-header {
+.title {
+  color:blue
+}
+.default {
+  color: black;
+}
+
+.warning {
+  color: red;
+}
+/* header {
   line-height: 1.5;
   max-height: 100vh;
 }
@@ -81,5 +127,5 @@ nav a:first-of-type {
     padding: 1rem 0;
     margin-top: 1rem;
   }
-}
+} */
 </style>

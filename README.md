@@ -57,4 +57,9 @@ npm run lint
 ※質問内容が’？’になっている場合は以下の資料を確認する。
 https://vuejs.org/guide/quick-start.html#creating-a-vue-application
 
+3,VsCodeのプラグイン
+Vue Language Features (Volar)
+TypeScript Vue Plugin (Volar)
+Vue 3 Snippets
 
+4,dev container
