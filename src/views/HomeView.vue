@@ -45,7 +45,7 @@ const clear = (): void => {
     </div>
   </div>
  
-  <button @click="()=> $router.push('/login')">LoginForm</button>
+  <button @click="()=> $router.push('/test_request')">TestRequest</button>
   
 
   <!-- <header>

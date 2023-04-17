@@ -16,6 +16,17 @@ const router = createRouter({
         requiresAuth: true
       }
     },
+    {
+      path: '/test_request',
+      name: 'test_request',
+      //ページ数が多くなった場合を考慮してレイジーロードでページを読み込む
+      // component: HomeView
+      component: () => import('../views/TestRequest.vue'),
+      //認証済の確認
+      meta: {
+        requiresAuth: true
+      }
+    },
     // {
     //   path: '/about',
     //   name: 'about',
