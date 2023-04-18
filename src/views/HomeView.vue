@@ -9,19 +9,22 @@ const state = reactive({
 const age = ref('')
 
 //グローバルステート
-const store = useCounterStore()
+const counterStore = useCounterStore()
 
 //副作用の宣言
 const text: string = ''
 
+function increaseGlobal(): void {
+  counterStore.count++
+}
 
 function increase(): void {
   state.count++
   if(state.count >= 5){
     state.countColor = 'warning'//属性情報を動的に変える
   }
-
 }
+
 const clear = (): void => {
   state.count = 0
   state.countColor = 'default'//属性情報を動的に変える
@@ -32,7 +35,8 @@ const clear = (): void => {
 
 <template>
   <div>
-    <p>{{ store.count }}</p>
+    <p>{{ counterStore.count }}</p>
+    <button @click="increaseGlobal">↑</button>
     <input v-model="text" />
     <p>{{ age }}</p>
     <p class="title">count!!</p> <!--通常のクラス設定 -->
